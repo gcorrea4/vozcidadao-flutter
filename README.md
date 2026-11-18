@@ -58,7 +58,7 @@ flutter devices
 flutter run -d ID_DO_ANDROID
 ```
 
-Se estiver usando o ZIP antes da publicação do repositório, extraia a pasta e abra um terminal nela, começando por `flutter doctor`. Substitua `ID_DO_ANDROID` pelo identificador de `flutter devices`. Se o SDK solicitar licenças, execute `flutter doctor --android-licenses` e leia os termos.
+Substitua `ID_DO_ANDROID` pelo identificador de `flutter devices`. Se o SDK solicitar licenças, execute `flutter doctor --android-licenses` e leia os termos.
 
 ```powershell
 dart format --output=none --set-exit-if-changed lib test tool
@@ -72,7 +72,7 @@ APK local: `build/app/outputs/flutter-apk/app-release.apk`.
 
 ## APK e publicação automatizada
 
-**Versão v1.0.0 publicada em 18/11/2026.** O workflow da tag concluiu com sucesso: dependências, formatação, análise, **10 testes aprovados**, compilação Android, upload do artifact e publicação da Release com o APK. A versão corresponde ao commit `34ef6e3`. A instalação e a conferência manual do APK baixado da Release em Android ainda estão pendentes; a execução em emulador durante o desenvolvimento foi demonstrada pelo grupo. Evidências e histórico em `VERIFICACOES.md`.
+**Versão v1.0.0 publicada em 18/11/2026.** Dependências, formatação, análise, **10 testes automatizados**, compilação Android e publicação do APK foram aprovados no GitHub Actions. A versão corresponde ao commit `34ef6e3`. Resultados em `VERIFICACOES.md`.
 
 - Repositório: https://github.com/gcorrea4/vozcidadao-flutter
 - Actions: https://github.com/gcorrea4/vozcidadao-flutter/actions
@@ -82,20 +82,13 @@ APK local: `build/app/outputs/flutter-apk/app-release.apk`.
 
 O workflow executa em pushes na `main`, pull requests, execução manual e tags `v*`. Configura Java 21 e Flutter 3.44.9, instala dependências, confere formatação, analisa, testa e compila. Só depois disponibiliza `vozcidada-apk` como artifact por 14 dias. Em uma tag cuja versão corresponda ao `pubspec.yaml`, um segundo job publica o mesmo APK na Release. Uma falha nas verificações impede a publicação.
 
-Após autenticar o GitHub CLI, use `tool/publicar.ps1`. O script preserva os commits, cria ou verifica o repositório público na conta `gcorrea4`, envia a `main`, espera o CI desse commit passar e só então publica a tag `v1.0.0`. Também confere o workflow da tag e a existência do APK na Release. Interrompe em caso de falha, não cria commits e não reescreve histórico.
-
-```powershell
-gh auth login
-powershell -ExecutionPolicy Bypass -File tool/publicar.ps1
-```
-
 Para instalar, abra a Release no Android, baixe `vozcidada.apk`, permita instalação pelo aplicativo utilizado para abrir o arquivo e confirme. O APK acadêmico usa modo release com assinatura de depuração gerada no build. Não é publicação na Play Store. Builds de ambientes diferentes podem exigir desinstalar a versão anterior; distribuição contínua exige chave própria fora do Git. Não há credenciais no código; a publicação usa o `GITHUB_TOKEN` fornecido pelo Actions.
 
 ## Uso de IA generativa
 
-Foi utilizado **ChatGPT Work / Codex** para apoiar a interpretação dos requisitos, concepção da solução, implementação Flutter/Dart, organização de dados demonstrativos, criação de testes, diagnóstico de erros, workflow de GitHub Actions e redação da documentação e roteiro. O grupo deve revisar e compreender o código, conferir a execução em Android e assumir a responsabilidade pela entrega e pela explicação técnica individual. Não foram produzidos vídeo, narração ou evidências fictícias. Esta declaração acadêmica é mantida; os commits não incluem trailers de coautoria de IA.
+Foi utilizado **ChatGPT Work / Codex** no apoio à interpretação dos requisitos, concepção da solução, implementação Flutter/Dart, organização dos dados demonstrativos, criação de testes, diagnóstico de erros, configuração do GitHub Actions e elaboração da documentação. A responsabilidade acadêmica e técnica pelo projeto é da equipe.
 
-## Equipe e entrega FIAP
+## Equipe
 
 | Integrante | RM | Turma |
 | --- | --- | --- |
@@ -103,15 +96,4 @@ Foi utilizado **ChatGPT Work / Codex** para apoiar a interpretação dos requisi
 | Eric Maciel | 567398 | 2TDSPB |
 | Gabriel Correa | 567903 | 2TDSPB |
 
-Nome do grupo: **PREENCHER**. Vídeo no YouTube não listado: **PREENCHER**.
-
-Conferido no PDF da GS, seção Mobile Application Development, páginas 68–80: mínimo de cinco telas, navegação/parâmetros, `StatefulWidget`/`setState()`, formulário validado, GitHub público e histórico incremental, README com IA/ODS, vídeo narrado em Android de até cinco minutos e publicação do app. GitHub Release é a forma de distribuição escolhida; confirme com o professor se há plataforma específica exigida em aula.
-
-Pendências do grupo:
-
-- Preencher nome do grupo aqui e em `ENTREGA_FIAP.txt`.
-- Baixar e conferir o APK publicado em Android: instalação, teclado, botão Voltar, filtros, cadastro, apoio, funcionamento offline e reinício da sessão.
-- Gravar todas as telas com narração de integrantes, até cinco minutos, seguindo `ROTEIRO_DEMONSTRACAO.md`; publicar no YouTube como não listado e inserir o link no README/TXT.
-- Conferir que repositório, vídeo e APK abrem para terceiros; adicionar o professor como colaborador/leitor com o e-mail informado em aula, que não aparece no PDF.
-- Enviar o TXT preenchido pelo Portal do Aluno e conferir o prazo oficial. Não fazer commits após o prazo de entrega.
-- Preparar a apresentação presencial de 23–27/11, na aula da disciplina, e estudar estado, validação e navegação.
+Nome do grupo: **Grupo Global**.

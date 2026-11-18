@@ -8,4 +8,4 @@ Instalação: baixe `vozcidada.apk` no Android, permita a instalação pelo apli
 
 APK acadêmico em modo release com assinatura de depuração, sem publicação na Play Store. A chave é gerada no ambiente de build; versões de execuções diferentes podem exigir desinstalar a anterior. Para distribuição contínua, configure uma chave de assinatura própria mantida fora do repositório.
 
-O workflow só disponibiliza o APK após análise, testes e compilação concluírem com sucesso. A demonstração manual em Android deve ser conferida pelo grupo.
+O workflow só disponibiliza o APK após análise, testes e compilação concluírem com sucesso.

@@ -108,7 +108,6 @@ try {
         throw 'A Release publicada com o APK nao foi confirmada.'
     }
     Write-Host "Release confirmada: $($release.url)"
-    Write-Host 'Atualize o status de publicacao no README apos conferir a instalacao em Android.'
 } finally {
     Pop-Location
 }

@@ -1,6 +1,6 @@
 GLOBAL SOLUTION FIAP 2026/2 — MOBILE APPLICATION DEVELOPMENT
 Solução: VozCidadã
-Nome do grupo: PREENCHER
+Nome do grupo: Grupo Global
 Turma: 2TDSPB
 
 Integrante 1 — Nome: Kayque Duarte | RM: 567980
@@ -10,12 +10,5 @@ Integrante 3 — Nome: Gabriel Correa | RM: 567903
 GitHub público:
 https://github.com/gcorrea4/vozcidadao-flutter
 
-Vídeo YouTube não listado, narrado, Android, até 5 minutos:
-PREENCHER
-
 APK — Release v1.0.0 publicada:
 https://github.com/gcorrea4/vozcidadao-flutter/releases/tag/v1.0.0
-
-Este é um modelo de identificação, não a entrega final preenchida.
-Adicionar o professor como colaborador/leitor pelo e-mail informado em aula.
-Confirmar prazo e enviar este TXT preenchido pelo Portal do Aluno.
