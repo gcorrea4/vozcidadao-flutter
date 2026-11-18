@@ -13,6 +13,6 @@ void main() {
     await tester.ensureVisible(button);
     await tester.tap(button);
     await tester.pumpAndSettle();
-    expect(find.text('Bem-vindo à comunidade'), findsOneWidget);
+    expect(find.text('Vamos cuidar\ndo nosso bairro?'), findsOneWidget);
   });
 }

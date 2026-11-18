@@ -63,7 +63,9 @@ class _ServicesScreenState extends State<ServicesScreen> {
         ),
         const SizedBox(height: 20),
         Text(
-          '${services.length} orientações encontradas',
+          services.length == 1
+              ? '1 orientação encontrada'
+              : '${services.length} orientações encontradas',
           style: const TextStyle(fontWeight: FontWeight.w700),
         ),
         const SizedBox(height: 12),

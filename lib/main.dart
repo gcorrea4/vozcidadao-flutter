@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'screens/app_shell.dart';
 import 'screens/welcome_screen.dart';
 import 'theme/app_theme.dart';
 
@@ -18,12 +19,8 @@ class VozCidadaApp extends StatelessWidget {
     localizationsDelegates: GlobalMaterialLocalizations.delegates,
     home: Builder(
       builder: (context) => WelcomeScreen(
-        onEnter: () => showDialog<void>(
-          context: context,
-          builder: (_) => const AlertDialog(
-            title: Text('Bem-vindo à comunidade'),
-            content: Text('A estrutura visual do VozCidadã está pronta.'),
-          ),
+        onEnter: () => Navigator.of(context).pushReplacement(
+          MaterialPageRoute<void>(builder: (_) => const AppShell()),
         ),
       ),
     ),
