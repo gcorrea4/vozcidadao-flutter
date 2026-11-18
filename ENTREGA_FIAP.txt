@@ -3,9 +3,9 @@ Solução: VozCidadã
 Nome do grupo: PREENCHER
 Turma: PREENCHER
 
-Integrante 1 — Nome: PREENCHER | RM: PREENCHER
-Integrante 2 — Nome: PREENCHER | RM: PREENCHER
-Integrante 3 — Nome: PREENCHER | RM: PREENCHER
+Integrante 1 — Nome: Kayque Duarte | RM: 567980
+Integrante 2 — Nome: Eric Maciel | RM: 567398
+Integrante 3 — Nome: Gabriel Correa | RM: 567903
 
 GitHub público:
 https://github.com/gcorrea4/vozcidadao-flutter
