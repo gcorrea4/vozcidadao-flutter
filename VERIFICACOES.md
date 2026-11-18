@@ -1,5 +1,9 @@
 # Verificações reais — 18/11/2026
 
+**Situação atual:** v1.0.0 publicada. Análise, dez testes e build Android aprovados no GitHub Actions, com o APK anexado à Release. A instalação manual desse APK em Android ainda está pendente. Os registros seguintes preservam o diagnóstico inicial e as correções, seguidos da confirmação final da publicação.
+
+## Registro inicial no ambiente restrito
+
 Ambiente: Windows, Flutter 3.44.9, Dart 3.12.2 e Java 21. Foi usada uma cópia do SDK em pasta temporária gravável, com dependências recuperadas do cache local; a instalação original não foi alterada. Os comandos abaixo foram executados no projeto.
 
 | Verificação | Resultado observado |
@@ -45,4 +49,23 @@ O workflow `44238330370` foi consultado diretamente no GitHub: instalação, for
 - O teste de votação tocou em “Ver detalhes” antes de renderizar o novo posicionamento após a rolagem. Foi adicionado um helper que centraliza o alvo e aguarda `pumpAndSettle()` antes de tocar. Toques que não atingirem o alvo agora falham imediatamente nos testes de fluxo.
 - A marca na tela de boas-vindas excedeu a largura em 320 pixels com fonte ampliada. O texto da marca agora ocupa um `Expanded`, permitindo quebra dentro da largura disponível sem reduzir a escala de acessibilidade.
 
-Depois desses ajustes, a formatação passou e `flutter analyze --no-pub` voltou a concluir com `No issues found!`. A suíte corrigida ainda precisa ser confirmada no CI, pois a comunicação local de `flutter test` permanece restrita neste ambiente. Nenhum teste foi removido ou ignorado e o requisito de sucesso antes da Release foi preservado.
+Depois desses ajustes, a formatação passou e `flutter analyze --no-pub` voltou a concluir com `No issues found!`. Naquele momento, a suíte corrigida ainda dependia de confirmação no CI, pois a comunicação local de `flutter test` permaneceu restrita neste ambiente. Nenhum teste foi removido ou ignorado e o requisito de sucesso antes da Release foi preservado.
+
+## Confirmação da versão publicada
+
+O script executado no terminal do usuário confirmou o workflow `44239530452` aprovado para a tag `v1.0.0`. Os jobs e logs dessa execução foram consultados diretamente no GitHub e confirmaram:
+
+| Etapa | Evidência |
+| --- | --- |
+| Dependências, formatação e análise | Etapas concluídas com `success` |
+| Testes | `00:03 +10: All tests passed!` |
+| Compilação release | `Built build/app/outputs/flutter-apk/app-release.apk (49.9MB)` |
+| Artifact | `vozcidada-apk` disponibilizado com sucesso |
+| Publicação | Job `Publicar APK da versão` concluído com `success`, com o APK anexado à Release |
+
+- Código da versão: commit `34ef6e3`, tag `v1.0.0`.
+- Workflow aprovado: https://github.com/gcorrea4/vozcidadao-flutter/actions/runs/44239530452
+- Release: https://github.com/gcorrea4/vozcidadao-flutter/releases/tag/v1.0.0
+- APK: https://github.com/gcorrea4/vozcidadao-flutter/releases/download/v1.0.0/vozcidada.apk
+
+A abertura do aplicativo durante o desenvolvimento foi demonstrada pelo usuário no emulador Android. Isso não substitui baixar, instalar e conferir o APK da Release. Permanecem pendentes essa conferência manual, identificação dos integrantes, vídeo narrado, acesso do professor e envio pelo Portal FIAP.

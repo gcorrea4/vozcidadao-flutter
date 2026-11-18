@@ -72,11 +72,13 @@ APK local: `build/app/outputs/flutter-apk/app-release.apk`.
 
 ## APK e publicação automatizada
 
-**Situação atual:** repositório público criado e código enviado. A execução inicial do Actions passou na análise, mas teve sete testes aprovados e três falhas. Os ajustes de navegação dos testes e de texto ampliado foram implementados; falta confirmar uma nova execução com todos os testes e o build aprovados. A Release ainda não foi confirmada. Consulte `VERIFICACOES.md`.
+**Versão v1.0.0 publicada em 18/11/2026.** O workflow da tag concluiu com sucesso: dependências, formatação, análise, **10 testes aprovados**, compilação Android, upload do artifact e publicação da Release com o APK. A versão corresponde ao commit `34ef6e3`. A instalação e a conferência manual do APK baixado da Release em Android ainda estão pendentes; a execução em emulador durante o desenvolvimento foi demonstrada pelo grupo. Evidências e histórico em `VERIFICACOES.md`.
 
 - Repositório: https://github.com/gcorrea4/vozcidadao-flutter
 - Actions: https://github.com/gcorrea4/vozcidadao-flutter/actions
 - Release: https://github.com/gcorrea4/vozcidadao-flutter/releases/tag/v1.0.0
+- Download do APK: https://github.com/gcorrea4/vozcidadao-flutter/releases/download/v1.0.0/vozcidada.apk
+- Execução aprovada da versão: https://github.com/gcorrea4/vozcidadao-flutter/actions/runs/44239530452
 
 O workflow executa em pushes na `main`, pull requests, execução manual e tags `v*`. Configura Java 21 e Flutter 3.44.9, instala dependências, confere formatação, analisa, testa e compila. Só depois disponibiliza `vozcidada-apk` como artifact por 14 dias. Em uma tag cuja versão corresponda ao `pubspec.yaml`, um segundo job publica o mesmo APK na Release. Uma falha nas verificações impede a publicação.
 
@@ -87,7 +89,7 @@ gh auth login
 powershell -ExecutionPolicy Bypass -File tool/publicar.ps1
 ```
 
-Quando disponível, abra a Release no Android, baixe `vozcidada.apk`, permita instalação pelo aplicativo utilizado para abrir o arquivo e confirme. O APK acadêmico usa modo release com assinatura de depuração gerada no build. Não é publicação na Play Store. Builds de ambientes diferentes podem exigir desinstalar a versão anterior; distribuição contínua exige chave própria fora do Git. Não há credenciais no código; a publicação usa o `GITHUB_TOKEN` fornecido pelo Actions.
+Para instalar, abra a Release no Android, baixe `vozcidada.apk`, permita instalação pelo aplicativo utilizado para abrir o arquivo e confirme. O APK acadêmico usa modo release com assinatura de depuração gerada no build. Não é publicação na Play Store. Builds de ambientes diferentes podem exigir desinstalar a versão anterior; distribuição contínua exige chave própria fora do Git. Não há credenciais no código; a publicação usa o `GITHUB_TOKEN` fornecido pelo Actions.
 
 ## Uso de IA generativa
 
@@ -108,8 +110,7 @@ Conferido no PDF da GS, seção Mobile Application Development, páginas 68–80
 Pendências do grupo:
 
 - Preencher integrantes, RMs, turma e nome do grupo aqui e em `ENTREGA_FIAP.txt`.
-- Concluir push e confirmar CI verde/Release se a rede ou autenticação bloquearem este ambiente.
-- Conferir APK em Android: teclado, botão Voltar, filtros, cadastro, apoio e reinício da sessão.
+- Baixar e conferir o APK publicado em Android: instalação, teclado, botão Voltar, filtros, cadastro, apoio, funcionamento offline e reinício da sessão.
 - Gravar todas as telas com narração de integrantes, até cinco minutos, seguindo `ROTEIRO_DEMONSTRACAO.md`; publicar no YouTube como não listado e inserir o link no README/TXT.
 - Conferir que repositório, vídeo e APK abrem para terceiros; adicionar o professor como colaborador/leitor com o e-mail informado em aula, que não aparece no PDF.
 - Enviar o TXT preenchido pelo Portal do Aluno e conferir o prazo oficial. Não fazer commits após o prazo de entrega.
