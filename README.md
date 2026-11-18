@@ -72,7 +72,7 @@ APK local: `build/app/outputs/flutter-apk/app-release.apk`.
 
 ## APK e publicação automatizada
 
-**Situação atual:** workflow preparado; nenhuma execução remota bem-sucedida ou Release foi confirmada. Consulte `VERIFICACOES.md` para resultados locais e bloqueios. Estes são destinos previstos, não evidências de publicação:
+**Situação atual:** repositório público criado e código enviado. A execução inicial do Actions passou na análise, mas teve sete testes aprovados e três falhas. Os ajustes de navegação dos testes e de texto ampliado foram implementados; falta confirmar uma nova execução com todos os testes e o build aprovados. A Release ainda não foi confirmada. Consulte `VERIFICACOES.md`.
 
 - Repositório: https://github.com/gcorrea4/vozcidadao-flutter
 - Actions: https://github.com/gcorrea4/vozcidadao-flutter/actions

@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:vozcidadao/main.dart';
 
+Future<void> scrollIntoView(WidgetTester tester, Finder finder) async {
+  await Scrollable.ensureVisible(tester.element(finder), alignment: 0.5);
+  // jumpTo solicita um novo layout; só toque após esse frame ser renderizado.
+  await tester.pumpAndSettle();
+}
+
 Future<void> enterApp(WidgetTester tester) async {
   tester.view.physicalSize = const Size(430, 932);
   tester.view.devicePixelRatio = 1;
@@ -9,12 +15,15 @@ Future<void> enterApp(WidgetTester tester) async {
   addTearDown(tester.view.resetDevicePixelRatio);
   await tester.pumpWidget(const VozCidadaApp());
   final enter = find.text('Acessar o aplicativo');
-  await tester.ensureVisible(enter);
+  await scrollIntoView(tester, enter);
   await tester.tap(enter);
   await tester.pumpAndSettle();
 }
 
 void main() {
+  setUp(() => WidgetController.hitTestWarningShouldBeFatal = true);
+  tearDown(() => WidgetController.hitTestWarningShouldBeFatal = false);
+
   testWidgets('busca de serviços filtra e abre detalhes por parâmetro', (
     tester,
   ) async {
@@ -34,7 +43,7 @@ void main() {
       find.text('Separe seu histórico ou carteira de vacinação, se tiver.'),
       findsOneWidget,
     );
-    await tester.pageBack();
+    await tester.tap(find.byType(BackButton));
     await tester.pumpAndSettle();
     await tester.enterText(
       find.byKey(const ValueKey('service-search')),
@@ -51,16 +60,16 @@ void main() {
     await tester.tap(find.text('Propostas'));
     await tester.pumpAndSettle();
     final details = find.text('Ver detalhes').first;
-    await tester.ensureVisible(details);
+    await scrollIntoView(tester, details);
     await tester.tap(details);
     await tester.pumpAndSettle();
     final button = find.byKey(const ValueKey('detail-support'));
-    await tester.ensureVisible(button);
+    await scrollIntoView(tester, button);
     await tester.tap(button);
     await tester.pumpAndSettle();
     expect(find.text('129 apoios'), findsOneWidget);
     expect(tester.widget<FilledButton>(button).onPressed, isNull);
-    await tester.pageBack();
+    await tester.tap(find.byType(BackButton));
     await tester.pumpAndSettle();
     expect(find.text('129 apoios'), findsOneWidget);
     expect(
@@ -78,37 +87,39 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('dashboard-create')));
     await tester.pumpAndSettle();
     final save = find.byKey(const ValueKey('save-proposal'));
-    await tester.ensureVisible(save);
+    await scrollIntoView(tester, save);
     await tester.tap(save);
     await tester.pumpAndSettle();
     expect(find.text('Selecione uma categoria.'), findsOneWidget);
     expect(find.text('Preencha o campo título.'), findsOneWidget);
-    await tester.ensureVisible(find.byKey(const ValueKey('proposal-title')));
+    await scrollIntoView(tester, find.byKey(const ValueKey('proposal-title')));
     await tester.enterText(
       find.byKey(const ValueKey('proposal-title')),
       'Calçada acessível para todos',
     );
     final category = find.byKey(const ValueKey('proposal-category'));
-    await tester.ensureVisible(category);
+    await scrollIntoView(tester, category);
     await tester.tap(category);
     await tester.pumpAndSettle();
     await tester.tap(find.text('Infraestrutura').last);
     await tester.pumpAndSettle();
-    await tester.ensureVisible(
+    await scrollIntoView(
+      tester,
       find.byKey(const ValueKey('proposal-neighborhood')),
     );
     await tester.enterText(
       find.byKey(const ValueKey('proposal-neighborhood')),
       'Jardim Ângela',
     );
-    await tester.ensureVisible(
+    await scrollIntoView(
+      tester,
       find.byKey(const ValueKey('proposal-description')),
     );
     await tester.enterText(
       find.byKey(const ValueKey('proposal-description')),
       'Proponho mapear trechos da calçada e priorizar melhorias de acessibilidade para os moradores.',
     );
-    await tester.ensureVisible(save);
+    await scrollIntoView(tester, save);
     await tester.tap(save);
     await tester.pumpAndSettle();
     expect(find.text('Calçada acessível para todos'), findsOneWidget);
@@ -141,7 +152,7 @@ void main() {
     );
     await tester.pumpAndSettle();
     expect(tester.takeException(), isNull);
-    await tester.ensureVisible(find.text('Acessar o aplicativo'));
+    await scrollIntoView(tester, find.text('Acessar o aplicativo'));
     expect(find.text('Acessar o aplicativo'), findsOneWidget);
   });
 }

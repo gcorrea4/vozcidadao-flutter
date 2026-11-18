@@ -34,3 +34,15 @@ Depois de todos passarem, testar em Android e usar `tool/publicar.ps1` para publ
 Se `gh api user` também falhar no seu próprio terminal, confira conexão, proxy ou firewall; se o GitHub responder com erro de autenticação, refaça `gh auth login`. O bloqueio observado aqui foi de conexão. Não foram criados repositório, push, tag ou Release confirmados.
 
 O grupo ainda precisa preencher os dados de identificação, gravar o vídeo narrado em Android, publicar no YouTube como não listado, adicionar o professor e enviar o TXT no Portal FIAP. Consulte o README e o roteiro.
+
+## Atualização após execução no terminal do usuário
+
+O usuário confirmou a abertura do aplicativo em emulador Android por captura de tela. O GitHub público foi criado e o push da `main` foi concluído. Isso atualiza as limitações observadas no ambiente restrito descritas acima; não comprova todos os fluxos manuais nem a compilação do APK release.
+
+O workflow `44238330370` foi consultado diretamente no GitHub: instalação, formatação e análise passaram; sete testes passaram e três falharam. O build de APK não chegou a executar. As falhas foram:
+
+- O helper `pageBack()` buscou o botão por uma identificação incompatível com a interface localizada. O teste agora toca no widget `BackButton` da tela.
+- O teste de votação tocou em “Ver detalhes” antes de renderizar o novo posicionamento após a rolagem. Foi adicionado um helper que centraliza o alvo e aguarda `pumpAndSettle()` antes de tocar. Toques que não atingirem o alvo agora falham imediatamente nos testes de fluxo.
+- A marca na tela de boas-vindas excedeu a largura em 320 pixels com fonte ampliada. O texto da marca agora ocupa um `Expanded`, permitindo quebra dentro da largura disponível sem reduzir a escala de acessibilidade.
+
+Depois desses ajustes, a formatação passou e `flutter analyze --no-pub` voltou a concluir com `No issues found!`. A suíte corrigida ainda precisa ser confirmada no CI, pois a comunicação local de `flutter test` permanece restrita neste ambiente. Nenhum teste foi removido ou ignorado e o requisito de sucesso antes da Release foi preservado.

@@ -26,12 +26,14 @@ class WelcomeScreen extends StatelessWidget {
                       size: 32,
                     ),
                     SizedBox(width: 10),
-                    Text(
-                      'VozCidadã',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w800,
+                    Expanded(
+                      child: Text(
+                        'VozCidadã',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontWeight: FontWeight.w800,
+                        ),
                       ),
                     ),
                   ],
