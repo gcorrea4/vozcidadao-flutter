@@ -84,9 +84,6 @@ O workflow executa em pushes na `main`, pull requests, execução manual e tags 
 
 Para instalar, abra a Release no Android, baixe `vozcidada.apk`, permita instalação pelo aplicativo utilizado para abrir o arquivo e confirme. O APK acadêmico usa modo release com assinatura de depuração gerada no build. Não é publicação na Play Store. Builds de ambientes diferentes podem exigir desinstalar a versão anterior; distribuição contínua exige chave própria fora do Git. Não há credenciais no código; a publicação usa o `GITHUB_TOKEN` fornecido pelo Actions.
 
-## Uso de IA generativa
-
-Foi utilizado **ChatGPT Work / Codex** no apoio à interpretação dos requisitos, concepção da solução, implementação Flutter/Dart, organização dos dados demonstrativos, criação de testes, diagnóstico de erros, configuração do GitHub Actions e elaboração da documentação. A responsabilidade acadêmica e técnica pelo projeto é da equipe.
 
 ## Equipe
 
