@@ -99,9 +99,9 @@ Foi utilizado **ChatGPT Work / Codex** para apoiar a interpretação dos requisi
 
 | Integrante | RM | Turma |
 | --- | --- | --- |
-| Kayque Duarte | 567980 | PREENCHER |
-| Eric Maciel | 567398 | PREENCHER |
-| Gabriel Correa | 567903 | PREENCHER |
+| Kayque Duarte | 567980 | 2TDSPB |
+| Eric Maciel | 567398 | 2TDSPB |
+| Gabriel Correa | 567903 | 2TDSPB |
 
 Nome do grupo: **PREENCHER**. Vídeo no YouTube não listado: **PREENCHER**.
 
@@ -109,7 +109,7 @@ Conferido no PDF da GS, seção Mobile Application Development, páginas 68–80
 
 Pendências do grupo:
 
-- Preencher turma e nome do grupo aqui e em `ENTREGA_FIAP.txt`.
+- Preencher nome do grupo aqui e em `ENTREGA_FIAP.txt`.
 - Baixar e conferir o APK publicado em Android: instalação, teclado, botão Voltar, filtros, cadastro, apoio, funcionamento offline e reinício da sessão.
 - Gravar todas as telas com narração de integrantes, até cinco minutos, seguindo `ROTEIRO_DEMONSTRACAO.md`; publicar no YouTube como não listado e inserir o link no README/TXT.
 - Conferir que repositório, vídeo e APK abrem para terceiros; adicionar o professor como colaborador/leitor com o e-mail informado em aula, que não aparece no PDF.

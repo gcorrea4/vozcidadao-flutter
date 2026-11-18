@@ -1,7 +1,7 @@
 GLOBAL SOLUTION FIAP 2026/2 — MOBILE APPLICATION DEVELOPMENT
 Solução: VozCidadã
 Nome do grupo: PREENCHER
-Turma: PREENCHER
+Turma: 2TDSPB
 
 Integrante 1 — Nome: Kayque Duarte | RM: 567980
 Integrante 2 — Nome: Eric Maciel | RM: 567398
