@@ -5,6 +5,8 @@ mkdir -p evidence
 adb install -r downloaded/vozcidada.apk | tee evidence/instalacao.txt
 adb shell dumpsys package br.com.fiap.vozcidadao > evidence/pacote-instalado.txt
 adb logcat -c
+adb shell am start -W -n br.com.fiap.vozcidadao/.MainActivity | tee evidence/abertura.txt
+adb shell pidof br.com.fiap.vozcidadao | tee evidence/processo.txt
 
 # O emulador permanece sem Wi-Fi e sem dados durante todos os fluxos.
 adb shell svc wifi disable
@@ -16,6 +18,19 @@ finish() {
   adb logcat -d > evidence/logcat.txt || true
   adb exec-out screencap -p > evidence/tela-final.png || true
   if [ "$result" -ne 0 ]; then
+    echo '--- Relatorio do teste ---'
+    cat evidence/results.xml || true
+    echo '--- Falhas Android/Flutter ---'
+    grep -E 'FATAL EXCEPTION|Fatal signal|E/flutter|Dart Error|br.com.fiap.vozcidadao' evidence/logcat.txt | tail -n 70 || true
+    echo '--- Arquivos de diagnostico ---'
+    find evidence -type f -name '*.json' -o -name '*.log' | head -n 12
+    python3 - <<'PY' || true
+from pathlib import Path
+for p in sorted(Path('evidence').rglob('*.json')):
+    if p.stat().st_size < 100000:
+        print('DIAGNOSTICO JSON:', p)
+        print(p.read_text()[-24000:])
+PY
     timeout 20s adb shell uiautomator dump /sdcard/vozcidada-ui.xml || true
     adb pull /sdcard/vozcidada-ui.xml evidence/hierarquia.xml || true
     python3 - <<'PY' || true
