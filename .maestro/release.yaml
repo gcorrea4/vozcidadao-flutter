@@ -64,7 +64,7 @@ name: APK v1.0.0 - servicos, apoio, cadastro e acompanhamento offline
     element: "(?s).*Título da proposta.*"
     direction: UP
 - tapOn: "(?s).*Título da proposta.*"
-- inputText: "(?s).*Mais luz na praca - teste APK.*"
+- inputText: "Mais luz na praca - teste APK"
 - hideKeyboard
 - tapOn: "(?s).*Categoria.*"
 - tapOn: "Infraestrutura"
