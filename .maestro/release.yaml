@@ -1,0 +1,122 @@
+appId: br.com.fiap.vozcidadao
+name: APK v1.0.0 - servicos, apoio, cadastro e acompanhamento offline
+---
+- launchApp:
+    clearState: true
+- assertVisible: "(?s).*VozCidadã.*"
+- takeScreenshot: "01-boas-vindas"
+- scrollUntilVisible:
+    element: "Acessar o aplicativo"
+    direction: DOWN
+- tapOn: "Acessar o aplicativo"
+- assertVisible: "(?s).*Vamos cuidar.*nosso bairro.*"
+- takeScreenshot: "02-inicio"
+
+# Busca e detalhes de um servico do APK instalado.
+- tapOn: "(?s).*Serviços.*"
+- tapOn: "(?s).*Buscar serviço.*"
+- inputText: "vacinacao"
+- hideKeyboard
+- assertVisible: "1 orientação encontrada"
+- tapOn: "Informações sobre vacinação"
+- assertVisible: "Por onde começar"
+- takeScreenshot: "03-detalhes-servico"
+- back
+- assertVisible: "(?s).*Buscar serviço.*"
+
+# Apoio unico e atualizacao da contagem entre telas.
+- tapOn: "(?s).*Propostas.*"
+- scrollUntilVisible:
+    element: "Ver detalhes"
+    direction: DOWN
+    centerElement: true
+- tapOn:
+    text: "Ver detalhes"
+    index: 0
+- assertVisible: "Mais luz no caminho de casa"
+- scrollUntilVisible:
+    element: "Apoiar esta proposta"
+    direction: DOWN
+    centerElement: true
+- assertVisible: "(?s).*128 apoios.*"
+- tapOn: "Apoiar esta proposta"
+- assertVisible: "(?s).*129 apoios.*"
+- assertVisible:
+    text: "Você já apoiou esta proposta"
+    enabled: false
+- takeScreenshot: "04-apoio-unico"
+- back
+- assertVisible: "(?s).*129 apoios.*"
+
+# Formulario invalido e valido, sem dados pessoais reais.
+- scrollUntilVisible:
+    element: "Criar proposta"
+    direction: UP
+- tapOn: "Criar proposta"
+- scrollUntilVisible:
+    element: "Salvar proposta"
+    direction: DOWN
+- tapOn: "Salvar proposta"
+- assertVisible: "Revise os campos destacados para enviar sua proposta."
+- takeScreenshot: "05-validacao"
+- scrollUntilVisible:
+    element: "(?s).*Título da proposta.*"
+    direction: UP
+- tapOn: "(?s).*Título da proposta.*"
+- inputText: "Mais luz na praca - teste APK"
+- hideKeyboard
+- tapOn: "(?s).*Categoria.*"
+- tapOn: "Infraestrutura"
+- scrollUntilVisible:
+    element: "(?s).*Bairro.*"
+    direction: DOWN
+- tapOn: "(?s).*Bairro.*"
+- inputText: "Jardim Angela"
+- hideKeyboard
+- scrollUntilVisible:
+    element: "(?s).*Descrição.*"
+    direction: DOWN
+- tapOn: "(?s).*Descrição.*"
+- inputText: "Melhorar a iluminacao da praca para facilitar a circulacao dos moradores a noite."
+- hideKeyboard
+- scrollUntilVisible:
+    element: "Salvar proposta"
+    direction: DOWN
+- tapOn: "Salvar proposta"
+- assertVisible: "Mais luz na praca - teste APK"
+- assertVisible: "Sua proposta"
+- takeScreenshot: "06-cadastro"
+- tapOn: "(?s).*Acompanhar.*"
+- tapOn: "Minhas propostas"
+- assertVisible: "Mais luz na praca - teste APK"
+- assertVisible: "Em análise"
+- takeScreenshot: "07-acompanhamento"
+- tapOn: "Mais luz na praca - teste APK"
+- assertVisible: "Detalhes da proposta"
+- scrollUntilVisible:
+    element: "Caminho da proposta"
+    direction: DOWN
+- takeScreenshot: "08-etapas"
+
+# Encerrar o processo deve reiniciar os dados temporarios, sem clearState.
+- launchApp
+- scrollUntilVisible:
+    element: "Acessar o aplicativo"
+    direction: DOWN
+- tapOn: "Acessar o aplicativo"
+- tapOn: "(?s).*Propostas.*"
+- scrollUntilVisible:
+    element: "Ver detalhes"
+    direction: DOWN
+    centerElement: true
+- tapOn:
+    text: "Ver detalhes"
+    index: 0
+- scrollUntilVisible:
+    element: "Apoiar esta proposta"
+    direction: DOWN
+- assertVisible: "(?s).*128 apoios.*"
+- assertVisible:
+    text: "Apoiar esta proposta"
+    enabled: true
+- takeScreenshot: "09-nova-sessao"
