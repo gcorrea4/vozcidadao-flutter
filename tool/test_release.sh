@@ -18,6 +18,9 @@ finish() {
   adb logcat -d > evidence/logcat.txt || true
   adb exec-out screencap -p > evidence/tela-final.png || true
   if [ "$result" -ne 0 ]; then
+    echo '--- SCREENSHOT_BASE64_BEGIN ---'
+    base64 -w 76 evidence/tela-final.png
+    echo '--- SCREENSHOT_BASE64_END ---'
     echo '--- Relatorio do teste ---'
     cat evidence/results.xml || true
     echo '--- Falhas Android/Flutter ---'

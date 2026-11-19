@@ -14,12 +14,13 @@ name: APK v1.0.0 - servicos, apoio, cadastro e acompanhamento offline
 
 # Busca e detalhes de um servico do APK instalado.
 - tapOn: "(?s).*Serviços.*"
-- tapOn: "(?s).*Buscar serviço.*"
+- tapOn:
+    point: "50%,27%"
 - inputText: "vacinacao"
 - hideKeyboard
 - assertVisible: "(?s).*1 orientação encontrada.*"
-- tapOn: "Informações sobre vacinação"
-- assertVisible: "Por onde começar"
+- tapOn: "(?s).*Informações sobre vacinação.*"
+- assertVisible: "(?s).*Por onde começar.*"
 - takeScreenshot: "03-detalhes-servico"
 - back
 - assertVisible: "(?s).*Buscar serviço.*"
@@ -33,7 +34,7 @@ name: APK v1.0.0 - servicos, apoio, cadastro e acompanhamento offline
 - tapOn:
     text: "Ver detalhes"
     index: 0
-- assertVisible: "Mais luz no caminho de casa"
+- assertVisible: "(?s).*Mais luz no caminho de casa.*"
 - scrollUntilVisible:
     element: "Apoiar esta proposta"
     direction: DOWN
@@ -57,13 +58,13 @@ name: APK v1.0.0 - servicos, apoio, cadastro e acompanhamento offline
     element: "Salvar proposta"
     direction: DOWN
 - tapOn: "Salvar proposta"
-- assertVisible: "Revise os campos destacados para enviar sua proposta."
+- assertVisible: "(?s).*Revise os campos destacados para enviar sua proposta\..*"
 - takeScreenshot: "05-validacao"
 - scrollUntilVisible:
     element: "(?s).*Título da proposta.*"
     direction: UP
 - tapOn: "(?s).*Título da proposta.*"
-- inputText: "Mais luz na praca - teste APK"
+- inputText: "(?s).*Mais luz na praca - teste APK.*"
 - hideKeyboard
 - tapOn: "(?s).*Categoria.*"
 - tapOn: "Infraestrutura"
@@ -83,18 +84,18 @@ name: APK v1.0.0 - servicos, apoio, cadastro e acompanhamento offline
     element: "Salvar proposta"
     direction: DOWN
 - tapOn: "Salvar proposta"
-- assertVisible: "Mais luz na praca - teste APK"
-- assertVisible: "Sua proposta"
+- assertVisible: "(?s).*Mais luz na praca - teste APK.*"
+- assertVisible: "(?s).*Sua proposta.*"
 - takeScreenshot: "06-cadastro"
 - tapOn: "(?s).*Acompanhar.*"
 - tapOn: "Minhas propostas"
-- assertVisible: "Mais luz na praca - teste APK"
-- assertVisible: "Em análise"
+- assertVisible: "(?s).*Mais luz na praca - teste APK.*"
+- assertVisible: "(?s).*Em análise.*"
 - takeScreenshot: "07-acompanhamento"
-- tapOn: "Mais luz na praca - teste APK"
-- assertVisible: "Detalhes da proposta"
+- tapOn: "(?s).*Mais luz na praca - teste APK.*"
+- assertVisible: "(?s).*Detalhes da proposta.*"
 - scrollUntilVisible:
-    element: "Caminho da proposta"
+    element: "(?s).*Caminho da proposta.*"
     direction: DOWN
 - takeScreenshot: "08-etapas"
 
