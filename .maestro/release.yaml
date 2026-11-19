@@ -17,7 +17,7 @@ name: APK v1.0.0 - servicos, apoio, cadastro e acompanhamento offline
 - tapOn: "(?s).*Buscar serviço.*"
 - inputText: "vacinacao"
 - hideKeyboard
-- assertVisible: "1 orientação encontrada"
+- assertVisible: "(?s).*1 orientação encontrada.*"
 - tapOn: "Informações sobre vacinação"
 - assertVisible: "Por onde começar"
 - takeScreenshot: "03-detalhes-servico"
