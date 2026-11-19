@@ -85,6 +85,10 @@ O workflow executa em pushes na `main`, pull requests, execução manual e tags 
 Para instalar, abra a Release no Android, baixe `vozcidada.apk`, permita instalação pelo aplicativo utilizado para abrir o arquivo e confirme. O APK acadêmico usa modo release com assinatura de depuração gerada no build. Não é publicação na Play Store. Builds de ambientes diferentes podem exigir desinstalar a versão anterior; distribuição contínua exige chave própria fora do Git. Não há credenciais no código; a publicação usa o `GITHUB_TOKEN` fornecido pelo Actions.
 
 
+## Demonstração
+
+[Assista à demonstração do VozCidadã no YouTube](https://www.youtube.com/watch?v=udS8ze9fdmo)
+
 ## Equipe
 
 | Integrante | RM | Turma |

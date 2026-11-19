@@ -10,5 +10,8 @@ Integrante 3 — Nome: Gabriel Correa | RM: 567903
 GitHub público:
 https://github.com/gcorrea4/vozcidadao-flutter
 
+Vídeo de demonstração:
+https://www.youtube.com/watch?v=udS8ze9fdmo
+
 APK — Release v1.0.0 publicada:
 https://github.com/gcorrea4/vozcidadao-flutter/releases/tag/v1.0.0
