@@ -58,7 +58,7 @@ name: APK v1.0.0 - servicos, apoio, cadastro e acompanhamento offline
     element: "Salvar proposta"
     direction: DOWN
 - tapOn: "Salvar proposta"
-- assertVisible: "(?s).*Revise os campos destacados para enviar sua proposta\..*"
+- assertVisible: "(?s).*Revise os campos destacados para enviar sua proposta[.].*"
 - takeScreenshot: "05-validacao"
 - scrollUntilVisible:
     element: "(?s).*Título da proposta.*"
